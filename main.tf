@@ -1,6 +1,6 @@
 module "gke-nfs" {
     source = "./gke-nfs"
-    project_id = "playground-s-11-140633d2"
+    project_id = "playground-s-11-9f32668d"
     cluster_name = "gke-with-nfs"
     region = "us-central1"
     network = "demo-network"
