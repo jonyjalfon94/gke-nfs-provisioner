@@ -6,3 +6,8 @@ provider "kubernetes" {
   token                  = data.google_client_config.default.access_token
   cluster_ca_certificate = base64decode(module.gke-nfs.ca_certificate)
 }
+
+provider "google" {
+  project = "playground-s-11-9f32668d"
+  region  = "us-central1"
+}
