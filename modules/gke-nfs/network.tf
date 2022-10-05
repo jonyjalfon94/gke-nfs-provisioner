@@ -37,7 +37,7 @@ module "gcp_network" {
   ]
 }
 
-resource "google_compute_firewall" "rules" {
+resource "google_compute_firewall" "allow_ssh" {
   project = var.project_id
   name    = "allow-ssh"
   network = var.network # Replace with a reference or self link to your network, in quotes
@@ -47,6 +47,18 @@ resource "google_compute_firewall" "rules" {
     ports    = ["22"]
   }
   source_ranges = ["35.235.240.0/20"]
+}
+
+resource "google_compute_firewall" "allow_nfs" {
+  project = var.project_id
+  name    = "allow-nfs"
+  network = var.network # Replace with a reference or self link to your network, in quotes
+
+  allow {
+    protocol = "tcp"
+    ports    = ["2049"]
+  }
+  source_ranges = ["192.168.0.0/18"]
 }
 
 resource "google_compute_router" "router" {
